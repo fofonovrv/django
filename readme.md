@@ -1,4 +1,4 @@
-# Django + mariadb в контейнерах
+# django + mariadb в контейнерах
 ### Сделано по статье https://habr.com/ru/post/519912/
 ### для новой машины запускаем скрипт для обновления пакетов, установки docker, docker-compose, pip, htop...
 !!! Обратите внимание, что для архитектуры ARM64 необходимо раскомментировать в скрипте соответствующую строку
@@ -20,7 +20,7 @@ networks:
 - Все контейнеры, к которым обратный прокси должен обращаться по имени должны быть в сети nginx-net!
 
 ### запускаем контейнер web для создания проекта project1
-sudo docker-compose run web django-admin startproject
+```sudo docker-compose run web django-admin startproject```
 ### меняем владельца созданной папки и файла
 ```
 sudo chown -R $USER:$USER project1
@@ -42,7 +42,7 @@ DATABASES = {
 }
 ```
 ### запускаем, проверяем, есть ли ошибки
-docker-compose up
+```docker-compose up```
 ### если все ок, выполняем миграцию БД
 ```
 docker-compose run web python manage.py makemigrations
