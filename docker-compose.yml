@@ -1,0 +1,33 @@
+version: '3'
+# https://habr.com/ru/post/519912/
+services:
+  web:
+    container_name: /project1-web
+    build: ./web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .://project1
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    networks:
+      - default
+      - nginx-net
+  db:
+    image: mariadb
+    ports:
+      - '3306:3306'
+    env_file: environments
+    restart: always
+    volumes:
+      - ./mysql-django:/var/lib/mysql
+    networks:
+      - default
+
+networks:
+  nginx-net:
+    external:
+      name: nginx-net
+  default:
+    driver: bridge
