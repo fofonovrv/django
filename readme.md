@@ -20,7 +20,9 @@ networks:
 - Все контейнеры, к которым обратный прокси должен обращаться по имени должны быть в сети nginx-net!
 
 ### запускаем контейнер web для создания проекта project1
-```sudo docker-compose run web django-admin startproject project1 .```
+```
+sudo docker-compose run web django-admin startproject project1 .
+```
 ### меняем владельца созданной папки и файла
 ```
 sudo chown -R $USER:$USER project1
@@ -42,7 +44,9 @@ DATABASES = {
 }
 ```
 ### запускаем, проверяем, есть ли ошибки
-```docker-compose up```
+```
+docker-compose up
+```
 ### если все ок, выполняем миграцию БД
 ```
 docker-compose run web python manage.py makemigrations
