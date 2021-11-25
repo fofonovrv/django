@@ -14,24 +14,28 @@ sudo ./install.sh
 docker network create --driver=bridge nginx-net
 
 ### в файл docker-compose.yml с вашим обратным прокси добавляем
+```
 networks:
   nginx-net:
     external:
       name: nginx-net
   default:
     driver: bridge
-    
+   ```
+   
 - Все контейнеры, к которым обратный прокси должен обращаться по имени должны быть в сети nginx-net!
 
 ### запускаем контейнер web для создания проекта project1
 sudo docker-compose run web django-admin startproject
 
 ### меняем владельца созданной папки и файла
+```
 sudo chown -R $USER:$USER project1
 sudo chown -R $USER:$USER manage.py
+```
 
 ### меняем настройки БД на mysql
-
+```
 vim project1/settings.py
 вставляем:
 DATABASES = {
@@ -44,12 +48,13 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+```
 ### запускаем, проверяем, есть ли ошибки
 
 docker-compose up
 
 ### если все ок, выполняем миграцию БД
-
+```
 docker-compose run web python manage.py makemigrations
 docker-compose run web python manage.py migrate
+```
