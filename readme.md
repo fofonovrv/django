@@ -7,7 +7,7 @@ sudo chmod +x install.sh
 sudo ./install.sh
 ```
 ### создаем сеть для Nginx (предполагается, что уже есть контейнер с NGINX или NGINX-PM)
-### например https://github.com/jc21/nginx-proxy-manager
+### например, nginx-proxy-manager https://github.com/jc21/nginx-proxy-manager
 docker network create --driver=bridge nginx-net
 ### в файл docker-compose.yml с вашим обратным прокси добавляем
 ```
@@ -18,7 +18,7 @@ networks:
   default:
     driver: bridge
    ```
-- Все контейнеры, к которым обратный прокси должен обращаться по имени должны быть в сети nginx-net!
+Все контейнеры, к которым обратный прокси должен обращаться по имени должны быть в сети nginx-net!
 
 ### запускаем контейнер web для создания проекта project1
 ```
