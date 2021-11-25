@@ -4,4 +4,4 @@ RUN mkdir /project1
 WORKDIR /project1
 COPY requirements.txt /project1/
 RUN pip install --upgrade pip && pip install -r requirements.txt
-ADD . //project1/
+ADD . /project1/
