@@ -27,9 +27,9 @@ sudo chown -R $USER:$USER project1
 sudo chown -R $USER:$USER manage.py
 ```
 ### меняем настройки БД на mysql
-```
 vim project1/settings.py
 вставляем:
+```
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
