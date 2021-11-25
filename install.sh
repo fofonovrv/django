@@ -9,10 +9,10 @@ echo "\033[33m Installing Docker... \033[0m"
 sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt update -y
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64]  focal stable"
-sudo apt update
-sudo apt install -y docker-ce
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker ${USER}
@@ -23,7 +23,4 @@ echo "\033[33m Installing pip, Docker-compose... \033[0m"
 sudo apt install -y pip
 sudo pip3 install docker-compose
 
-echo "\033[33m  \033[0m"
-echo "\033[33m  \033[0m"
-echo "\033[33m  \033[0m"
 echo "\033[33m Please log out and log back! \033[0m"
