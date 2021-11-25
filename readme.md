@@ -2,9 +2,10 @@
 
 ### Сделано по статье https://habr.com/ru/post/519912/
 
-### устанавливаем docker и docker-compose
-sudo chmod +x docker.sh
-sudo ./docker.sh
+### для новой машины запускаем скрипт для обновления пакетов, установки docker, docker-compose, pip, htop...
+!!! Обратите внимание, что для архитектуры ARM64 необходимо раскомментировать в скрипте соответствующую строку
+sudo chmod +x install.sh
+sudo ./install.sh
 
 ### создаем сеть для Nginx (предполагается, что уже есть контейнер с NGINX или NGINX-PM)
 docker network create --driver=bridge nginx-net
